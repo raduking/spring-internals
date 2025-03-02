@@ -1,0 +1,36 @@
+
+server:
+    port: 8100
+
+management:
+    server:
+        port: 8101
+
+spring:
+    application:
+        name: spring-internals
+    threads:
+        virtual:
+            enabled: true
+
+logging:
+    level:
+        jdk.internal.net.http: DEBUG
+        org.apache.hc: DEBUG
+        org.apiphany: DEBUG
+
+clients:
+    compression:
+        gzip: true
+    custom:
+        java-net-http:
+            request:
+                version: HTTP/1.1
+        http-client-5:
+            request:
+                protocol-upgrade-enabled: false
+                protocol-version: HTTP/2
+
+apiphany-tests:
+    base-url: http://localhost:8666
+
