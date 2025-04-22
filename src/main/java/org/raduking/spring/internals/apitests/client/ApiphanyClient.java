@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class ApiphanyClient extends ApiClient {
 
 	protected ApiphanyClient(@Value("${apiphany-tests.base-url}") final String baseUrl,
-			@Qualifier(ClientConfiguration.HTTP_EXCHANGE_CLIENT) final ExchangeClient exchangeClient) {
+			@Qualifier(ClientConfiguration.REST_TEMPLATE_EXCHANGE_CLIENT) final ExchangeClient exchangeClient) {
 		super(baseUrl, exchangeClient);
 	}
 
