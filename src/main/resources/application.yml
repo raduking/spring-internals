@@ -5,6 +5,8 @@ server:
 management:
     server:
         port: 8101
+    tracing:
+        enabled: true
 
 spring:
     application:
@@ -14,10 +16,14 @@ spring:
             enabled: true
 
 logging:
+    pattern:
+        level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+        #level: "%5p"
     level:
         jdk.internal.net.http: DEBUG
         org.apache.hc: DEBUG
         org.apiphany: DEBUG
+        org.springframework.boot.context.logging: DEBUG
 
 clients:
     compression:
