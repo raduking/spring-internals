@@ -40,3 +40,6 @@ clients:
 apiphany-tests:
     base-url: http://localhost:8666
 
+performance:
+    enabled:
+        - ApiPerformance
