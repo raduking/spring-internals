@@ -39,7 +39,7 @@ public class ApiPerformance extends AbstractPerformanceService<ApiPerformance.Se
 					.url(settings.getUrl())
 					.body(settings.getBody())
 					.retrieve(String.class)
-					.orNull();
+					.orRethrow();
 		}
 
 	}
