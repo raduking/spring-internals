@@ -47,9 +47,8 @@ public abstract class AbstractPerformanceService<T> implements PerformanceServic
 
 		LOGGER.info("[END] {}", performanceSettings.getServiceName());
 
-		PerformanceResult result = new PerformanceResult(performanceSettings.getServiceName(), durationAccumulator);
-		result.setTotalTime(executionTimeHolder.getValue());
-		return result;
+		return new PerformanceResult(
+				performanceSettings.getServiceName(), durationAccumulator, executionTimeHolder.getValue());
 	}
 
 }
