@@ -27,7 +27,7 @@ logging:
 
 clients:
     compression:
-        gzip: true
+        gzip: false
     custom:
         java-net-http:
             request:
