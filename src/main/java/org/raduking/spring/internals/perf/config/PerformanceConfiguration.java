@@ -30,4 +30,8 @@ public class PerformanceConfiguration {
 		return enabled.contains(performanceService.name());
 	}
 
+	public boolean isDisabled(final PerformanceService performanceService) {
+		return !isEnabled(performanceService);
+	}
+
 }

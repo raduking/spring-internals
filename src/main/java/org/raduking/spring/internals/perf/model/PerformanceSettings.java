@@ -1,6 +1,6 @@
 package org.raduking.spring.internals.perf.model;
 
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Map;
 
 import org.apiphany.json.JsonBuilder;
@@ -12,13 +12,11 @@ public class PerformanceSettings {
 
 	public static final int DEFAULT_LOOP_COUNT = 5;
 
-	private String serviceName;
-
 	private Integer threadCount = DEFAULT_THREAD_COUNT;
 
 	private Integer loopCount = DEFAULT_LOOP_COUNT;
 
-	private Map<String, Object> custom = new HashMap<>();
+	private Map<String, Object> services = Collections.emptyMap();
 
 	@Override
 	public String toString() {
@@ -41,24 +39,18 @@ public class PerformanceSettings {
 		this.loopCount = loopCount;
 	}
 
-	public String getServiceName() {
-		return serviceName;
+	public Map<String, Object> getServices() {
+		return services;
 	}
 
-	public void setServiceName(final String serviceName) {
-		this.serviceName = serviceName;
+	public void setServices(final Map<String, Object> services) {
+		this.services = services;
 	}
 
-	public Map<String, Object> getCustom() {
-		return custom;
-	}
-
-	public void setCustom(final Map<String, Object> custom) {
-		this.custom = custom;
-	}
-
-	public <T> T getCustomProperties(final Class<T> cls) {
+	public <T> T getCustomProperties(final String serviceName, final Class<T> cls) {
+		Object custom = getServices().get(serviceName);
 		Map<String, Object> properties = JsonBuilder.toMap(custom, Consumers.noConsumer());
 		return JsonBuilder.fromMap(properties, cls, Consumers.noConsumer());
 	}
+
 }

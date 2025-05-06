@@ -1,9 +1,8 @@
 package org.raduking.spring.internals.perf;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.Set;
 
-import org.apiphany.lang.Strings;
 import org.raduking.spring.internals.perf.config.PerformanceConfiguration;
 import org.raduking.spring.internals.perf.model.PerformanceResults;
 import org.raduking.spring.internals.perf.model.PerformanceSettings;
@@ -43,15 +42,10 @@ public class PerformanceRunner {
 
 	public PerformanceResults run(final PerformanceSettings performanceSettings) {
 		PerformanceResults results = new PerformanceResults();
-		String serviceToRun = performanceSettings.getServiceName();
+		Set<String> servicesToRun = performanceSettings.getServices().keySet();
 		performanceServices.stream()
 				.filter(performanceConfiguration::isEnabled)
-				.filter(s -> {
-					if (Strings.isNotEmpty(serviceToRun)) {
-						return Objects.equals(serviceToRun, s.getClass().getSimpleName());
-					}
-					return true;
-				})
+				.filter(svc -> servicesToRun.contains(svc.getClass().getSimpleName()))
 				.forEach(service -> results.addResult(service.run(performanceSettings)));
 		return results;
 	}

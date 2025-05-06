@@ -24,11 +24,12 @@ public abstract class AbstractPerformanceService<T> implements PerformanceServic
 
 	@Override
 	public PerformanceResult run(final PerformanceSettings performanceSettings) {
-		LOGGER.info("[BEGIN] {}", performanceSettings.getServiceName());
+		String serviceName = name();
+		LOGGER.info("[BEGIN] {}", serviceName);
 
 		durationAccumulator.clear();
 
-		T settings = performanceSettings.getCustomProperties(getCustomSettingsClass());
+		T settings = performanceSettings.getCustomProperties(serviceName, getCustomSettingsClass());
 
 		List<Runnable> runnables = new ArrayList<>(performanceSettings.getThreadCount());
 		for (int i = 0; i < performanceSettings.getThreadCount(); ++i) {
@@ -45,10 +46,9 @@ public abstract class AbstractPerformanceService<T> implements PerformanceServic
 		LOGGER.info("{}", durationAccumulator.buildStatistics());
 		LOGGER.info("Total execution time: {}s", executionTimeHolder.getValue());
 
-		LOGGER.info("[END] {}", performanceSettings.getServiceName());
+		LOGGER.info("[END] {}", serviceName);
 
-		return new PerformanceResult(
-				performanceSettings.getServiceName(), durationAccumulator, executionTimeHolder.getValue());
+		return new PerformanceResult(serviceName, durationAccumulator, executionTimeHolder.getValue());
 	}
 
 }
