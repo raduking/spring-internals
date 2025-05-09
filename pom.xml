@@ -57,10 +57,10 @@
 			<optional>true</optional>
 		</dependency>
 
-		<!-- Apiphany -->
+		<!-- Stressium -->
 		<dependency>
 			<groupId>io.github.raduking</groupId>
-			<artifactId>apiphany-spring</artifactId>
+			<artifactId>stressium</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 

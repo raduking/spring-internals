@@ -1,37 +1,19 @@
 package org.raduking.spring.internals.perf.config;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.apiphany.client.ExchangeClient;
+import org.raduking.spring.internals.apitests.config.ClientConfiguration;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.stressium.EnableStressium;
+import org.stressium.service.ApiPerformance;
 
-import org.raduking.spring.internals.perf.PerformanceService;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
-
-/**
- * Configuration for performance tests.
- *
- * @author Radu Sebastian LAZIN
- */
-@Component
-@ConfigurationProperties(prefix = "performance")
+@Configuration
+@EnableStressium
 public class PerformanceConfiguration {
 
-	private List<String> enabled = new ArrayList<>();
-
-	public List<String> getEnabled() {
-		return enabled;
+	@Bean
+	ApiPerformance apiPerformance(@Qualifier(ClientConfiguration.HTTP_EXCHANGE_CLIENT) ExchangeClient exchangeClient) {
+		return new ApiPerformance(exchangeClient);
 	}
-
-	public void setEnabled(final List<String> enabled) {
-		this.enabled = enabled;
-	}
-
-	public boolean isEnabled(final PerformanceService performanceService) {
-		return enabled.contains(performanceService.name());
-	}
-
-	public boolean isDisabled(final PerformanceService performanceService) {
-		return !isEnabled(performanceService);
-	}
-
 }
