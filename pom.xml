@@ -24,7 +24,11 @@
 	</licenses>
 
 	<developers>
-		<developer/>
+		<developer>
+			<id>raduking</id>
+			<name>Radu Sebastian LAZIN</name>
+			<email>raduking@gmail.com</email>
+		</developer>
 	</developers>
 
 	<scm>
