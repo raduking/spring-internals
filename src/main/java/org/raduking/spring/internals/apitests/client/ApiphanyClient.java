@@ -18,6 +18,7 @@ public class ApiphanyClient extends ApiClient {
 
 	public Customer getCustomer(final String customerId) {
 		return client()
+				.http()
 				.get()
 				.path(API, "customers", customerId)
 				.retrieve(Customer.class)
@@ -26,6 +27,7 @@ public class ApiphanyClient extends ApiClient {
 
 	public String getServiceName() {
 		return client()
+				.http()
 				.get()
 				.path(API, "service", "name")
 				.retrieve(String.class)
