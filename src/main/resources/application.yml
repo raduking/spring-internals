@@ -7,6 +7,17 @@ management:
         port: 8101
     tracing:
         enabled: true
+    metrics:
+        tags:
+            application: ${spring.application.name}
+    observations:
+        key-values:
+            application: ${spring.application.name}
+    endpoints:
+        web:
+            base-path: /
+            exposure:
+                include: health, env, info, metrics, prometheus, loggers, httptrace, beans, httpexchanges
 
 spring:
     application:
