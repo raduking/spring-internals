@@ -3,6 +3,13 @@ package org.raduking.spring.internals.perf.service;
 import org.springframework.stereotype.Service;
 import org.stressium.AbstractPerformanceService;
 
+/**
+ * Tests the performance of a simple loop given the number of iterations.
+ * <p>
+ * The default number of iterations if not provided is 100_000.
+ *
+ * @author Radu Sebastian LAZIN
+ */
 @Service
 public class LoopPerformance extends AbstractPerformanceService<LoopPerformance.Settings> {
 

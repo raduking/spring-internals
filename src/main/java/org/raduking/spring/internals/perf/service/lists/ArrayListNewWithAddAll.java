@@ -12,7 +12,7 @@ public class ArrayListNewWithAddAll extends ListsConcatenation {
 	public Object runStep() {
 		List<Integer> result = new ArrayList<>(list1);
 		result.addAll(list2);
-		return list1;
+		return result;
 	}
 
 }
