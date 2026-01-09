@@ -19,6 +19,11 @@ management:
             exposure:
                 include: health, env, info, metrics, prometheus, loggers, httptrace, beans, httpexchanges
 
+springdoc:
+    api-docs:
+        path: /public/api-docs
+    paths-to-match: /api/test/info/**,/api/test/data/**
+
 spring:
     application:
         name: spring-internals
