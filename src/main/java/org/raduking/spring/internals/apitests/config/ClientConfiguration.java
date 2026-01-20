@@ -4,7 +4,7 @@ import org.apiphany.client.ClientProperties;
 import org.apiphany.client.ExchangeClient;
 import org.apiphany.client.http.ApacheHC5ExchangeClient;
 import org.apiphany.client.http.JavaNetHttpExchangeClient;
-import org.apiphany.spring.client.RestTemplateExchangeClient;
+import org.apiphany.client.http.RestTemplateExchangeClient;
 import org.apiphany.spring.tracing.EnableTracingB3MultiHeaders;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
