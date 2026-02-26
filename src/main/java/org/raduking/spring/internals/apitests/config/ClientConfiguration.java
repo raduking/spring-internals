@@ -2,7 +2,7 @@ package org.raduking.spring.internals.apitests.config;
 
 import org.apiphany.client.ClientProperties;
 import org.apiphany.client.ExchangeClient;
-import org.apiphany.client.http.ApacheHC5ExchangeClient;
+import org.apiphany.client.http.ApacheHC5HttpExchangeClient;
 import org.apiphany.client.http.JavaNetHttpExchangeClient;
 import org.apiphany.client.http.RestTemplateExchangeClient;
 import org.apiphany.spring.tracing.EnableTracingB3MultiHeaders;
@@ -36,7 +36,7 @@ public class ClientConfiguration {
 
 	@Bean(APACHE_HC5_EXCHANGE_CLIENT)
 	ExchangeClient apacheHC5ExchangeClient(@Qualifier(HTTP_EXCHANGE_CLIENT_PROPERTIES) final ClientProperties clientProperties) {
-		return new ApacheHC5ExchangeClient(clientProperties);
+		return new ApacheHC5HttpExchangeClient(clientProperties);
 	}
 
 	@Bean(REST_TEMPLATE_EXCHANGE_CLIENT)
