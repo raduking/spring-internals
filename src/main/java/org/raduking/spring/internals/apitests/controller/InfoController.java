@@ -20,10 +20,9 @@ public class InfoController {
 		this.name = getClass().getName();
 	}
 
-	@SuppressWarnings("unused")
-	@GetMapping("/user/{userId}")
+	@GetMapping(path = "/user/{userId}", produces = "application/json")
 	public ResponseEntity<UserCacheInfo> getUserCacheInfo(@PathVariable final String userId) {
-		UserCacheInfo result = UserCacheInfo.builder().build();
+		UserCacheInfo result = UserCacheInfo.builder().userId(userId).build();
 		return ResponseEntity.ok(result);
 	}
 
