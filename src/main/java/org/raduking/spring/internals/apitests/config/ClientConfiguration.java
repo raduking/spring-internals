@@ -6,7 +6,6 @@ import org.apiphany.client.ExchangeClientBuilder;
 import org.apiphany.client.http.ApacheHC5HttpExchangeClient;
 import org.apiphany.client.http.JavaNetHttpExchangeClient;
 import org.apiphany.client.http.RestTemplateExchangeClient;
-import org.apiphany.spring.tracing.EnableTracingB3MultiHeaders;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,7 +16,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties
-@EnableTracingB3MultiHeaders
 public class ClientConfiguration {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ClientConfiguration.class);
@@ -66,6 +64,7 @@ public class ClientConfiguration {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	ExchangeClient none() {
 		return ExchangeClientBuilder.create().withDefaultClient().build().unwrap();
 	}
